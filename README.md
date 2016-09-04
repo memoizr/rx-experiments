@@ -4,6 +4,8 @@ This is a boilerplate project to play with some aspects of RxJava.
 
 There is a way to debug every single step of the RX chain and print it to console. Just put `.observeDebug()` immediately after each of your source observables, and subscribe with `.subscribeDebug()`.
 
+Note that `.observeDebug()` is simply a marker that allows you to log what's going on one in the previous step (which may have otherwise been out of bounds). It is an identity transformation, and therefore idempotent.
+
 Example:        
 
 ```
