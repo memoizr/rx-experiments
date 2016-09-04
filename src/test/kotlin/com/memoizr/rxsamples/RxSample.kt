@@ -8,7 +8,6 @@ import org.junit.Test
 import rx.Observable
 import rx.plugins.RxJavaPlugins
 import rx.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
 
 class RxSample {
@@ -28,8 +27,9 @@ class RxSample {
 
     @Test
     fun otherExample() {
-        Observable.interval(100, TimeUnit.MILLISECONDS)
-                .observeDebug()
+        Observable.just(1).observeDebug()
+                .observeOn(Schedulers.computation())
+                .map { it * 2 }
                 .observeOn(TestSchedulers.mainThread)
                 .subscribeDebug()
     }
